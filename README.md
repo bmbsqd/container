@@ -3,8 +3,11 @@ bmbsqd-container
 
 * Simple
 * Fast
-* Typed all way thru
+* Strongly typed all the way
 * C#
+* Extensible
+* Immutable
+* Build time validation
 
 
 
@@ -58,37 +61,35 @@ bmbsqd-container
 
 ### Getting started
 
-```CSharp
-  var builder = new ContainerBuilder();
+	```CSharp
+	var builder = new ContainerBuilder();
 
-  // Auto dependency injection
-  builder.Register<ISomeComponent,SomeComponent>();
+	// Auto dependency injection
+	builder.Register<ISomeComponent,SomeComponent>();
 
-  // Singleton scoped
-  builder.Register<ISomeComponent,SomeComponent>().SingletonScoped();
+	// Singleton scoped
+	builder.Register<ISomeComponent,SomeComponent>().SingletonScoped();
 
-  // Auto dependency injection with ISomeComponent decorator
-  builder.Register<ISomeComponent,SomeComponent>().With<SomeDecorator>();
+	// Auto dependency injection with ISomeComponent decorator
+	builder.Register<ISomeComponent,SomeComponent>().With<SomeDecorator>();
 
-  // Multiple decorators
-  builder.Register<ISomeComponent,SomeComponent>().
-    With<LocalCacheDecorator>().
-    With<MemcacheDecorator>();
+	// Multiple decorators
+	builder.Register<ISomeComponent,SomeComponent>().
+		With<LocalCacheDecorator>().
+		With<MemcacheDecorator>();
 
-  // Register static value
-  builder.Register( "Hello World" );
+	// Register static value
+	builder.Register( "Hello World" );
 
-  // Register a named static value
-  builder.Register( "smtp.gmail.com", "smtp-host" );
+	// Register a named static value
+	builder.Register( "smtp.gmail.com", "smtp-host" );
 
+	// Register a factory for ISomeComponent
+	builder.Register<ISomeComponent>( c => new SomeComponent() );
 
-  // Register a factory for ISomeComponent
-  builder.Register<ISomeComponent>( c => new SomeComponent() );
+	var container = builder.Build();
+	var component = container.Resolve<ISomeComponent>();
 
-
-  var container = builder.Build();
-  var component = container.Resolve<ISomeComponent>();
-
-  // Resolve named component
-  var smtpHost = container.Resolve<string>( "smtp-host" );
-```
+	// Resolve named component
+	var smtpHost = container.Resolve<string>( "smtp-host" );
+	```
