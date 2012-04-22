@@ -2,5 +2,18 @@
 bin
 obj
 
-# mstest test results
-TestResults
+#Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+
+#Visual Studio files
+*.user
+*.suo
+
+#Subversion files
+.svn
+
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
