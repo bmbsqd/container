@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A93F3EAC-34B4-4DA4-B4DB-4EE99C76A8D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bombsquad.Container.Tests</RootNamespace>
+    <AssemblyName>Bombsquad.Container.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DecoratorTests.cs" />
+    <Compile Include="Fakes\DualConstructorFakeComponent.cs" />
+    <Compile Include="Fakes\FakeComponentDecorator.cs" />
+    <Compile Include="Fakes\FakeComponentDecoratorWithOtherDependency.cs" />
+    <Compile Include="Fakes\FakeComponentScope.cs" />
+    <Compile Include="Fakes\AberFakeComponent.cs" />
+    <Compile Include="Fakes\AbstractFakeComponent.cs" />
+    <Compile Include="ContainerBuilderTests.cs" />
+    <Compile Include="Fakes\CircularDependentComponentA.cs" />
+    <Compile Include="Fakes\CircularDependentComponentB.cs" />
+    <Compile Include="Fakes\DependantOnFakeComponent.cs" />
+    <Compile Include="Fakes\DependantOnNamedFakeComponent.cs" />
+    <Compile Include="Fakes\DisposableComponent.cs" />
+    <Compile Include="Fakes\FakeComponent.cs" />
+    <Compile Include="Fakes\FakeContainer.cs" />
+    <Compile Include="Fakes\IFakeComponent.cs" />
+    <Compile Include="Fakes\IFakeComponentWithValue.cs" />
+    <Compile Include="Fakes\ManyConstructorsFakeComponent.cs" />
+    <Compile Include="Fakes\SimpleCircularDependentComponent.cs" />
+    <Compile Include="Fakes\UnsatisfiedComponent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Fakes\TwoConstructorsFakeComponent.cs" />
+    <Compile Include="ReflectionFactoryTests.cs" />
+    <Compile Include="ScopeTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bombsquad.Container\Bombsquad.Container.csproj">
+      <Project>{999F0F69-281B-4C0B-AB61-DCD35DD3284D}</Project>
+      <Name>Bombsquad.Container</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
