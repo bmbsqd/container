@@ -61,7 +61,8 @@ bmbsqd-container
 
 ### Getting started
 
-	```CSharp
+```CSharp
+
 	var builder = new ContainerBuilder();
 
 	// Auto dependency injection
@@ -92,4 +93,4 @@ bmbsqd-container
 
 	// Resolve named component
 	var smtpHost = container.Resolve<string>( "smtp-host" );
-	```
+```
